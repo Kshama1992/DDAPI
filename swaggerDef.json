@@ -1,0 +1,17 @@
+{
+  "info": {
+    "title": "DropDesk API",
+    "version": "1.7.31",
+    "description": "DropDesk API documentation"
+  },
+  "basePath": "/",
+  "apis": ["src/controller/*.ts"],
+  "securityDefinitions": {
+    "bearerAuth": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "scheme": "bearer",
+      "in": "header"
+    }
+  }
+}

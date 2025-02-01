@@ -1,0 +1,38 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"module": "commonjs",
+		"lib": ["es5", "es6", "dom"],
+		"sourceMap": true,
+		"inlineSourceMap": true,
+		"types": ["reflect-metadata", "jest", "ts-jest"],
+		"outDir": "./build",
+		"strict": true,
+		"noImplicitAny": true,
+		"skipLibCheck": true,
+		"alwaysStrict": true,
+		"noUnusedLocals": true ,
+		"moduleResolution": "node",
+		"baseUrl": "./",
+		"paths": {
+			"@src/*": ["src/*"],
+			"@controller/*": ["src/controller/*"],
+			"@services/*": ["src/services/*"],
+			"@entity/*": ["src/entity/*"],
+			"@keys/*": ["keys/*"],
+			"@utils/*": ["src/utils/*"],
+			"@cron/*": ["src/cron/*"],
+			"@helpers/*": ["src/utils/helpers/*"],
+			"@interface/*": ["src/interface/*"],
+		},
+		"esModuleInterop": true,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"strictPropertyInitialization": false,
+		"typeRoots": ["./types", "./node_modules/@types"]
+	},
+//	"exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts", "build"],
+	"include": ["./src/**/*.tsx", "./src/**/*.ts"]
+}
