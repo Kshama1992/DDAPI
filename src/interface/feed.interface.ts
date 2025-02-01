@@ -1,0 +1,30 @@
+import type BaseInterface from './base.interface';
+import type FileInterface from './file.interface';
+import type VenueInterface from './venue.interface';
+import type UserInterface from './user.interface';
+import type BrandInterface from './brand.interface';
+import type CompanyInterface from './company.interface';
+import type FeedLikeInterface from './feed-like.interface';
+import type GroupInterface from './group.interface';
+import type FeedCategoryInterface from './feed-category.interface';
+import type FeedCommentInterface from './feed-comment.interface';
+import type FeedPinInterface from './feed-pin.interface';
+export default interface FeedInterface extends BaseInterface {
+    message: string;
+    isReported: boolean;
+    userId: number;
+    feedCategoryId: number;
+    companyId: number;
+    groupId: number;
+    brandId: number;
+    user?: UserInterface;
+    company?: CompanyInterface;
+    category?: FeedCategoryInterface;
+    group?: GroupInterface;
+    brand?: BrandInterface;
+    attachments?: FileInterface[];
+    comments?: FeedCommentInterface[];
+    likes?: FeedLikeInterface[];
+    pins?: FeedPinInterface[];
+    venue?: VenueInterface;
+}
