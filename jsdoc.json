@@ -1,0 +1,51 @@
+{
+  "recurseDepth": 10,
+  "opts": {
+    "encoding": "utf8",
+    "destination": "./docs",
+    "readme": "intro.md",
+    "recurse": true,
+    "template": "node_modules/better-docs"
+  },
+  "tags": {
+    "allowUnknownTags": ["category","subcategory", "Entity", "Column", "relation", "enum", "optional","swagger"],
+    "dictionaries": ["jsdoc","closure"]
+  },
+  "plugins": [
+    "plugins/markdown",
+    "node_modules/jsdoc-babel",
+    "node_modules/better-docs/category",
+    "node_modules/better-docs/typescript"
+  ],
+  "sourceType": "module",
+  "source": {
+    "include" : ["./src"],
+    "exclude": ["./node_modules", "./data", "./keys","./logs"],
+    "includePattern": "\\.(ts)$",
+    "excludePattern": "(node_modules/|docs)"
+  },
+  "babel": {
+    "extensions": ["ts", "tsx"],
+    "ignore": ["**/*.(test|spec).ts"],
+    "babelrc": false,
+    "presets": [["@babel/preset-env", { "targets": { "node": true } }], "@babel/preset-typescript"],
+    "plugins": [["@babel/plugin-proposal-decorators", { "legacy": true }], "@babel/proposal-class-properties", "@babel/proposal-object-rest-spread", "@babel/plugin-transform-typescript"]
+  },
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "search": true,
+    "better-docs": {
+      "name": "DropDesk API Documentation",
+      "logo": "./logo.png",
+      "title": "DropDesk API Documentation",
+      "hideGenerator": true,
+      "navLinks": [
+        {
+          "label": "GitLab",
+          "href": "https://gitlab.com/drop-desk/api"
+        }
+      ]
+    }
+  }
+}

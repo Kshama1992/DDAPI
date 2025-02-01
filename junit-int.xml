@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="2" failures="2" errors="0" time="14.506">
+  <testsuite name="VenueStateMachine" errors="0" failures="2" skipped="0" timestamp="2024-09-26T13:38:07" time="14.28" tests="2">
+    <testcase classname="VenueStateMachine handlePublish should create a new user and update venue when publish is handled" name="VenueStateMachine handlePublish should create a new user and update venue when publish is handled" time="0.003">
+      <failure>Error: Cannot use spyOn on a primitive value; undefined given
+    at ModuleMocker.spyOn (D:\DropdeskgithubAug\api\node_modules\jest-mock\build\index.js:719:13)
+    at D:\DropdeskgithubAug\api\src\utils\state-machines\__tests__\venue-state-machine.spec.ts:53:45
+    at Generator.next (&lt;anonymous&gt;)
+    at D:\DropdeskgithubAug\api\src\utils\state-machines\__tests__\venue-state-machine.spec.ts:8:71
+    at new Promise (&lt;anonymous&gt;)
+    at Object.&lt;anonymous&gt;.__awaiter (D:\DropdeskgithubAug\api\src\utils\state-machines\__tests__\venue-state-machine.spec.ts:4:12)
+    at Object.&lt;anonymous&gt; (D:\DropdeskgithubAug\api\src\utils\state-machines\__tests__\venue-state-machine.spec.ts:52:88)
+    at Promise.then.completed (D:\DropdeskgithubAug\api\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (D:\DropdeskgithubAug\api\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (D:\DropdeskgithubAug\api\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async _runTest (D:\DropdeskgithubAug\api\node_modules\jest-circus\build\run.js:252:3)
+    at async _runTestsForDescribeBlock (D:\DropdeskgithubAug\api\node_modules\jest-circus\build\run.js:126:9)
+    at async _runTestsForDescribeBlock (D:\DropdeskgithubAug\api\node_modules\jest-circus\build\run.js:121:9)
+    at async _runTestsForDescribeBlock (D:\DropdeskgithubAug\api\node_modules\jest-circus\build\run.js:121:9)
+    at async run (D:\DropdeskgithubAug\api\node_modules\jest-circus\build\run.js:71:3)
+    at async runAndTransformResultsToJestFormat (D:\DropdeskgithubAug\api\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at async jestAdapter (D:\DropdeskgithubAug\api\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at async runTestInternal (D:\DropdeskgithubAug\api\node_modules\jest-runner\build\runTest.js:367:16)
+    at async runTest (D:\DropdeskgithubAug\api\node_modules\jest-runner\build\runTest.js:444:34)</failure>
+    </testcase>
+    <testcase classname="VenueStateMachine handlePublish should throw an error if requested user is not found" name="VenueStateMachine handlePublish should throw an error if requested user is not found" time="0.001">
+      <failure>Error: Cannot use spyOn on a primitive value; undefined given
+    at ModuleMocker.spyOn (D:\DropdeskgithubAug\api\node_modules\jest-mock\build\index.js:719:13)
+    at D:\DropdeskgithubAug\api\src\utils\state-machines\__tests__\venue-state-machine.spec.ts:72:45
+    at Generator.next (&lt;anonymous&gt;)
+    at D:\DropdeskgithubAug\api\src\utils\state-machines\__tests__\venue-state-machine.spec.ts:8:71
+    at new Promise (&lt;anonymous&gt;)
+    at Object.&lt;anonymous&gt;.__awaiter (D:\DropdeskgithubAug\api\src\utils\state-machines\__tests__\venue-state-machine.spec.ts:4:12)
+    at Object.&lt;anonymous&gt; (D:\DropdeskgithubAug\api\src\utils\state-machines\__tests__\venue-state-machine.spec.ts:71:75)
+    at Promise.then.completed (D:\DropdeskgithubAug\api\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (D:\DropdeskgithubAug\api\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (D:\DropdeskgithubAug\api\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async _runTest (D:\DropdeskgithubAug\api\node_modules\jest-circus\build\run.js:252:3)
+    at async _runTestsForDescribeBlock (D:\DropdeskgithubAug\api\node_modules\jest-circus\build\run.js:126:9)
+    at async _runTestsForDescribeBlock (D:\DropdeskgithubAug\api\node_modules\jest-circus\build\run.js:121:9)
+    at async _runTestsForDescribeBlock (D:\DropdeskgithubAug\api\node_modules\jest-circus\build\run.js:121:9)
+    at async run (D:\DropdeskgithubAug\api\node_modules\jest-circus\build\run.js:71:3)
+    at async runAndTransformResultsToJestFormat (D:\DropdeskgithubAug\api\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at async jestAdapter (D:\DropdeskgithubAug\api\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at async runTestInternal (D:\DropdeskgithubAug\api\node_modules\jest-runner\build\runTest.js:367:16)
+    at async runTest (D:\DropdeskgithubAug\api\node_modules\jest-runner\build\runTest.js:444:34)</failure>
+    </testcase>
+  </testsuite>
+</testsuites>
