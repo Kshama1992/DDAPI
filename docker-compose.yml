@@ -1,0 +1,60 @@
+version: "3"
+services:
+  api:
+    build: .
+    restart: always
+    ports:
+      - "3000:3000"
+    env_file: .env
+    command: ["yarn", "start"]
+    volumes:
+      - ../keys:/home/node/app/keys
+      - ../logs:/home/node/app/logs
+#      - /app/node_modules
+    networks:
+      - postgres
+
+  redis:
+    image: redis:latest
+    restart: always
+    networks:
+      - postgres
+    expose:
+      - 1985
+    ports:
+      - "1985:1985"
+
+  nginx:
+    image: pagespeed/nginx-pagespeed:stable
+    restart: always
+    env_file:
+      - .env
+    entrypoint: ["/nginx-entrypoint.sh"]
+    volumes:
+      - ./data/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./sh/nginx-entrypoint.sh:/nginx-entrypoint.sh
+      - ./data/nginx/default.conf.template.prod:/etc/nginx/conf.d/default.conf.template
+      - ../data/certbot/conf:/etc/letsencrypt
+      - ../data/certbot/www:/var/www/certbot
+      - ../data/nginx/cache:/var/cache/nginx
+      - ./options-ssl-nginx.conf:/etc/letsencrypt/options-ssl-nginx.conf
+    ports:
+      - "80:80"
+      - "443:443"
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    networks:
+      - postgres
+
+  certbot:
+    image: certbot/dns-route53
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ../data/certbot/conf:/etc/letsencrypt
+      - ../data/certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+
+networks:
+  postgres:
+    driver: bridge

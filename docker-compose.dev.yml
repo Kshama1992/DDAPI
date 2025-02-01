@@ -1,0 +1,64 @@
+version: "3"
+services:
+  api:
+    build: .
+    restart: always
+    ports:
+      - "3000:3000"
+      - "9229:9229"
+    env_file: .env
+    command: ["yarn", "start"]
+    volumes:
+      - ../keys:/home/node/app/keys
+      - ../logs:/home/node/app/logs
+    networks:
+      - postgres
+    depends_on:
+      - redis
+
+  pgadmin:
+    image: dpage/pgadmin4
+    env_file: .env
+    restart: always
+    expose:
+      - 16545
+    ports:
+      - "16545:16545"
+    volumes:
+      - ../data/pgadmin:/var/lib/pgadmin
+    networks:
+      - postgres
+
+  redis:
+    image: redis:latest
+    restart: always
+    networks:
+      - postgres
+    expose:
+      - ${REDIS_PORT}
+    ports:
+      - "${REDIS_PORT}:${REDIS_PORT}"
+
+  nginx:
+    image: pagespeed/nginx-pagespeed:stable
+    restart: always
+    env_file:
+      - .env
+    entrypoint: ["/nginx-entrypoint.sh"]
+    volumes:
+      - ./data/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./sh/nginx-entrypoint.sh:/nginx-entrypoint.sh
+      - ./data/nginx/default.conf.template:/etc/nginx/conf.d/default.conf.template
+      - ../data/certbot/conf:/etc/letsencrypt
+      - ../data/certbot/www:/var/www/certbot
+      - ../data/nginx/cache:/var/cache/nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    networks:
+      - postgres
+
+networks:
+  postgres:
+    driver: bridge

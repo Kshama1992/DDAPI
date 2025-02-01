@@ -1,0 +1,38 @@
+version: "3"
+services:
+  api:
+    build: .
+    restart: always
+    ports:
+      - "3000:3000"
+      - "9229:9229"
+    env_file: .env.test
+    command: ["yarn", "debug"]
+    volumes:
+      - ../keys:/home/node/app/keys
+      - ../logs:/home/node/app/logs
+    networks:
+      - postgres
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:latest
+    restart: always
+    env_file: .env.test
+    networks:
+      - postgres
+    expose:
+      - "6379"
+
+  postgres:
+    image: postgis/postgis
+    ports:
+      - "5432:5432"
+    env_file: .env.test
+    volumes:
+        - ./data/init_db.sql:/docker-entrypoint-initdb.d/init.sql
+
+networks:
+  postgres:
+    driver: bridge
